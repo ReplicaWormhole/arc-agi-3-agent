@@ -1,0 +1,23 @@
+name: Experiment
+description: Propose a falsifiable ARC-AGI-3 experiment
+title: "experiment: "
+labels: [experiment]
+body:
+  - type: textarea
+    attributes:
+      label: Question and hypothesis
+      description: State the hypothesis, predictions, and a falsifying observation.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Method and owned paths
+      description: Include environment versions, seeds, baselines, and files this track owns.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Acceptance evidence
+      description: Name tests, trace fields, and the comparison that would support or reject it.
+    validations:
+      required: true

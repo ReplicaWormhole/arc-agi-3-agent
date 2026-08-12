@@ -1,0 +1,28 @@
+# Secrets and local editor state
+.env
+*.swp
+.DS_Store
+
+# Python build and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Local ARC toolkit data and non-reproducible experiment outputs
+environment_files/
+recordings/
+work/**/logs/
+work/**/artifacts/
+
+# Locally downloaded/served model weights
+models/
+*.gguf
+*.safetensors
+*.bin

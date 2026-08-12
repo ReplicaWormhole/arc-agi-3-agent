@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arc-agi-3-agent"
+version = "0.1.0"
+description = "Reproducible exploration and world-model experiments for ARC-AGI-3"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "arc-agi",
+  "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build",
+  "ruff>=0.8",
+]
+
+[tool.setuptools.packages.find]
+where = ["work/2026-08-local-agent-harness"]
+include = ["arc_agent*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"work/2026-08-local-agent-harness/tests/*.py" = ["E402"]

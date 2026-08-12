@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install locked dependencies
+        run: uv sync --locked --all-extras --python ${{ matrix.python-version }}
+      - name: Lint
+        run: uv run ruff check .
+      - name: Unit tests
+        run: uv run python -m unittest discover -s work/2026-08-local-agent-harness/tests -v
+      - name: Build source and wheel artifacts
+        run: uv run python -m build
