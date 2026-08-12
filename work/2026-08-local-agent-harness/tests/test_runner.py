@@ -13,6 +13,10 @@ from arc_agent.runner import run_episode
 
 
 class RunnerTests(unittest.TestCase):
+    @unittest.skipUnless(
+        (PROJECT / "environment_files" / "ls20").exists(),
+        "requires a locally cached ls20 environment",
+    )
     def test_offline_episode_writes_actionable_trace(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             summary = run_episode(

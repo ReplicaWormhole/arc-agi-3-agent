@@ -17,6 +17,10 @@ For every run, preserve a JSONL trace containing:
 Keep traces under `work/<topic>/logs/`; they are ignored by Git unless a small,
 deliberately scrubbed fixture is needed for a test.
 
+GitHub CI runs the model-free tests and skips the cached-`ls20` integration
+test because benchmark environments are intentionally not committed. Run that
+integration test locally after downloading the environment.
+
 ## Development versus evaluation
 
 Local development can use cached public environments and a remote model to
